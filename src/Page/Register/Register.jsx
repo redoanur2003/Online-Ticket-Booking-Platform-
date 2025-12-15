@@ -5,6 +5,7 @@ import SocialLogin from '../SocialLogin/SocialLogin';
 import axios from 'axios';
 import UseAxios from '../../Hook/UseAxios/UseAxios';
 import useAuth from '../../Component/Auth/AuthContext/useAuth';
+import Swal from 'sweetalert2';
 
 const Register = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -60,11 +61,24 @@ const Register = () => {
                             .catch(error => console.log(error))
                     })
 
-
+                Swal.fire({
+                    position: 'top-right',
+                    title: "Login",
+                    icon: "success",
+                    draggable: true,
+                    timer: 1000
+                });
 
             })
             .catch(error => {
                 console.log(error)
+                Swal.fire({
+                    position: 'top-right',
+                    title: "Error!?",
+                    text: "Account already exist!",
+                    icon: "question",
+                    timer: 1000
+                });
             })
     }
 
