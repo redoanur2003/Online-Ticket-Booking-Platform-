@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { NavLink } from 'react-router';
+import { Link, NavLink } from 'react-router';
 import { Menu, X } from 'lucide-react';
 import image from '../../assets/ticketBari.jpg'
 
@@ -22,20 +22,20 @@ const NavBar = () => {
 
                     <ul
                         className={`absolute bg-white rounded-lg px-2  shadow-lg duration-1000 ${state ? 'grid gap-4 p-2 w-50 text-xl' : '-ml-40 grid gap-2'}`}>
-                        <li className="hover:text-cyan-300 hover:underline">
-                            Home</li>
+                        <Link className="hover:text-cyan-300 hover:underline">
+                            Home</Link>
 
-                        <li className="hover:text-cyan-300 hover:underline cursor-pointer transition-colors">
-                            All Tickets</li>
+                        <Link className="hover:text-cyan-300 hover:underline cursor-pointer transition-colors">
+                            All Tickets</Link>
 
-                        <li className="hover:text-cyan-300 hover:underline">
-                            DashBoard</li>
+                        <Link className="hover:text-cyan-300 hover:underline">
+                            DashBoard</Link>
 
-                        <li className="hover:text-cyan-300 hover:underline">
-                            Login</li>
+                        <Link className="hover:text-cyan-300 hover:underline">
+                            Login</Link>
 
-                        <li className="hover:text-cyan-300 hover:underline">
-                            Register</li>
+                        <Link className="hover:text-cyan-300 hover:underline">
+                            Register</Link>
                     </ul>
                 </div>
             </div>
@@ -43,27 +43,29 @@ const NavBar = () => {
             <div className="flex items-center">
 
                 <ul className="hidden md:flex text-black gap-6">
-                    <li className="hover:text-cyan-300 hover:underline">
-                        Home</li>
+                    <Link to='/' className="hover:text-cyan-300 hover:underline">
+                        Home</Link>
 
-                    <li className="hover:text-cyan-300 hover:underline">
-                        All Tickets</li>
+                    <Link to='allTicket' className="hover:text-cyan-300 hover:underline">
+                        All Tickets</Link>
 
-                    <li className="hover:text-cyan-300 hover:underline">
-                        DashBoard</li>
+                    <Link to='dashBoard' className="hover:text-cyan-300 hover:underline">
+                        DashBoard</Link>
 
-                    <li className="hover:text-cyan-300 hover:underline">
-                        Login</li>
+                    <Link to='login' className="hover:text-cyan-300 hover:underline">
+                        Login</Link>
 
-                    <li className="hover:text-cyan-300 hover:underline">
-                        Register</li>
+                    <Link to='register' className="hover:text-cyan-300 hover:underline">
+                        Register</Link>
                 </ul>
 
             </div>
 
             <div>
                 <div className='flex gap-3'>
-                    <button className=' text-black btn btn-primary'>Login</button>
+                    <NavLink to='/login'>
+                        <button className=' text-black btn btn-primary'>Login</button>
+                    </NavLink>
                 </div>
             </div>
         </nav>
