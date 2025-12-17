@@ -5,12 +5,16 @@ import AuthLayout from "../Component/Root/Authlayout";
 import Login from "../Page/Login/Login";
 import Register from "../Page/Register/Register";
 import ForgetPassword from "../Page/Login/ForgetPassword";
+import AllTIcket from "../Page/AllTicket/AllTIckets/AllTIcket";
 
 export const router = createBrowserRouter([{
     path: '/',
     Component: Root,
     children: [
-        { index: true, path: '/', Component: Home }
+        { index: true, path: '/', Component: Home },
+        {
+            path: '/allTickets', Component: AllTIcket
+        }
     ]
 },
 {
