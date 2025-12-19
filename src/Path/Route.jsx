@@ -8,6 +8,8 @@ import ForgetPassword from "../Page/Login/ForgetPassword";
 import AllTIcket from "../Page/AllTicket/AllTIckets/AllTIcket";
 import PrivateRoute from "../Component/Root/PrivateRoute";
 import SingleTicket from "../Page/SingleTicket/SingleTicket";
+import DashboardLayout from "./DashboardLayout";
+import DashBoardHome from "../DashBoard/DashBoardHome/DashBoardHome";
 
 export const router = createBrowserRouter([{
     path: '/',
@@ -41,4 +43,15 @@ export const router = createBrowserRouter([{
             Component: ForgetPassword
         }
     ]
-}])
+},
+{
+    path: 'dashboard',
+    element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
+    children: [
+        {
+            index: true,
+            Component: DashBoardHome
+        }
+    ]
+}
+])

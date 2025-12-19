@@ -30,7 +30,7 @@ const SingleTicket = () => {
     const [bookQuantity, setBookQuantity] = useState(1);
     const [isExpired, setIsExpired] = useState(false);
 
-    // 3. Countdown Logic
+    //  Countdown
     useEffect(() => {
         if (!ticket?.departureTime) return;
 
@@ -70,7 +70,7 @@ const SingleTicket = () => {
     const handleBookingSubmit = (e) => {
         e.preventDefault();
 
-        // Validation: Quantity check
+        // Validation check
         if (bookQuantity > ticket.quantity) {
             Swal.fire({
                 position: 'top-right',
@@ -92,7 +92,7 @@ const SingleTicket = () => {
             return;
         }
 
-        // Success Action (Simulating Database Save)
+        // convert data into object
         const bookingData = {
             ticketId: ticket._id,
             userEmail: user.email,
@@ -100,7 +100,7 @@ const SingleTicket = () => {
             totalPrice: bookQuantity * ticket.price,
             status: "Pending"
         };
-        console.log(bookingData.bookQuantity);
+        // console.log(bookingData.bookQuantity);
 
         Swal.fire({
             title: "Agree with the Cost?",
@@ -123,7 +123,7 @@ const SingleTicket = () => {
                                 "q": ticket.quantity - bookingData.bookQuantity
                             }
 
-                            console.log("availableTicket: ", tq.q);
+                            // console.log("availableTicket: ", tq.q);
 
                             axios.patch(`/tickets/${bookingData.ticketId}`, tq)
                                 .then(res => {
@@ -144,14 +144,14 @@ const SingleTicket = () => {
     };
 
     // Derived State for Button Disabling
-    // Disabled if expired OR quantity is 0
+
     const isButtonDisabled = isExpired || ticket.quantity === 0;
 
     return (
         <div className="min-h-screen bg-gray-50 py-10 px-4 md:px-8">
             <div className="max-w-5xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden grid grid-cols-1 lg:grid-cols-2">
 
-                {/* Left Column: Image & Countdown */}
+                {/* Image & Countdown */}
                 <div className="relative h-64 lg:h-auto">
                     <img
                         src={ticket.image}
