@@ -4,6 +4,8 @@ import { useQuery } from '@tanstack/react-query';
 import { FaBangladeshiTakaSign, FaLocationArrow, FaLocationPin } from 'react-icons/fa6';
 // import { useForm, useWatch } from 'react-hook-form';
 import Loading from '../../../Component/Loading/Loading';
+import { NavLink } from 'react-router';
+import { Calendar, Clock } from 'lucide-react';
 
 
 const AllTIcket = () => {
@@ -50,7 +52,7 @@ const AllTIcket = () => {
         }
     };
 
-    console.log("All ticket: ", allTicket);
+    // console.log("All ticket: ", allTicket);
     return (
         <>
             <div className=''>
@@ -106,8 +108,14 @@ const AllTIcket = () => {
 
                                     {/* Departure time */}
                                     <div className='flex justify-between text-2xl mb-2'>
-                                        <p>Departure: {ticket.departureTime.slice(0, 10)}</p>
-                                        <p>Time: {ticket.departureTime.slice(11, 16)}</p>
+                                        <div className="flex items-center gap-2 text-gray-700">
+                                            <Calendar size={18} className="text-gray-400" />
+                                            <span>Departure Date: <strong>{new Date(ticket.departureTime).toLocaleDateString()}</strong></span>
+                                        </div>
+                                        <div className="flex items-center gap-2 text-gray-700">
+                                            <Clock size={18} className="text-gray-400" />
+                                            <span>Departure Time: <strong>{new Date(ticket.departureTime).toLocaleTimeString()}</strong></span>
+                                        </div>
                                     </div>
 
                                     {/* Perks List */}
@@ -127,9 +135,11 @@ const AllTIcket = () => {
                                         </div>
                                     </div>
 
-                                    <button className="mt-auto w-full btn btn-primary text-white font-medium py-3 rounded-lg transition-colors duration-200 flex justify-center items-center gap-2">
-                                        See Details
-                                    </button>
+                                    <NavLink to={`/tickets/${ticket._id}`}>
+                                        <button className="mt-auto w-full btn btn-primary text-white font-medium py-3 rounded-lg transition-colors duration-200 flex justify-center items-center gap-2">
+                                            See Details
+                                        </button>
+                                    </NavLink>
                                 </div>
                             </div>
                         )) : <div className='text-center text-xl text-yellow-300'>

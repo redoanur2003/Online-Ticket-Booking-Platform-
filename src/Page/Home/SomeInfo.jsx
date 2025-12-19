@@ -2,6 +2,7 @@ import React from 'react';
 import UseAxios from '../../Hook/UseAxios/UseAxios';
 import { useQuery } from '@tanstack/react-query';
 import { FaBangladeshiTakaSign } from "react-icons/fa6";
+import { NavLink } from 'react-router';
 const SomeInfo = () => {
     const axiosSecure = UseAxios();
 
@@ -76,9 +77,11 @@ const SomeInfo = () => {
                                 </div>
                             </div>
 
-                            <button className="mt-auto w-full btn btn-primary text-white font-medium py-3 rounded-lg transition-colors duration-200 flex justify-center items-center gap-2">
-                                See Details
-                            </button>
+                            <NavLink to={`/tickets/${info._id}`}>
+                                <button className="mt-auto w-full btn btn-primary text-white font-medium py-3 rounded-lg transition-colors duration-200 flex justify-center items-center gap-2">
+                                    See Details
+                                </button>
+                            </NavLink>
                         </div>
                     </div>
                 ))}
@@ -137,9 +140,11 @@ const SomeInfo = () => {
                                     </div>
                                 </div>
 
-                                <button className="mt-auto w-full btn btn-primary text-white font-medium py-3 rounded-lg transition-colors duration-200 flex justify-center items-center gap-2">
-                                    See Details
-                                </button>
+                                <NavLink to={`/tickets/${info._id}`}>
+                                    <button className="mt-auto w-full btn btn-primary text-white font-medium py-3 rounded-lg transition-colors duration-200 flex justify-center items-center gap-2">
+                                        See Details
+                                    </button>
+                                </NavLink>
                             </div>
                         </div>
                     ))}
