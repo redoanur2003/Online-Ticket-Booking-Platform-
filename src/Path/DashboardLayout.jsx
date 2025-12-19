@@ -56,7 +56,7 @@ const DashboardLayout = () => {
                                 </NavLink>
                             </li>
                             <li>
-                                <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="My Booked Tickets" to="/dashboard/my-booked-tickets">
+                                <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="My Booked Tickets" to="/dashboard/myBookingTickets">
                                     <Ticket size={16} />
                                     <span className="is-drawer-close:hidden">My Booked Tickets</span>
                                 </NavLink>

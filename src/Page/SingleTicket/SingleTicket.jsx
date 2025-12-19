@@ -95,7 +95,7 @@ const SingleTicket = () => {
         // convert data into object
         const bookingData = {
             ticketId: ticket._id,
-            userEmail: user.email,
+            email: user.email,
             bookQuantity: bookQuantity,
             totalPrice: bookQuantity * ticket.price,
             status: "Pending"
@@ -133,7 +133,7 @@ const SingleTicket = () => {
                                     }
                                 });
 
-                            navigate('/')
+                            navigate('/dashboard/myBookingTickets')
                         }
                     })
 

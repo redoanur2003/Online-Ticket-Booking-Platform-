@@ -11,6 +11,7 @@ import SingleTicket from "../Page/SingleTicket/SingleTicket";
 import DashboardLayout from "./DashboardLayout";
 import DashBoardHome from "../DashBoard/DashBoardHome/DashBoardHome";
 import Profile from "../DashBoard/Profile/Profile";
+import MyBookingTickets from "../DashBoard/User/MyBookingTickets/MyBookingTickets";
 
 export const router = createBrowserRouter([{
     path: '/',
@@ -56,6 +57,10 @@ export const router = createBrowserRouter([{
         {
             path: '/dashboard/profile',
             Component: Profile
+        },
+        {
+            path: '/dashboard/myBookingTickets',
+            Component: MyBookingTickets
         }
     ]
 }

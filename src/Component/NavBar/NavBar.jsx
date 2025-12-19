@@ -43,11 +43,15 @@ const NavBar = () => {
                         <Link to='dashBoard' className="hover:text-cyan-300 hover:underline">
                             DashBoard</Link>
 
-                        <Link to='login' className="hover:text-cyan-300 hover:underline">
-                            Login</Link>
+                        {user ? <Link to='/dashBoard/profile'>Profile</Link> :
+                            <div>
+                                <Link to='login' className="hover:text-cyan-300 hover:underline">
+                                    Login</Link>
 
-                        <Link to='register' className="hover:text-cyan-300 hover:underline">
-                            Register</Link>
+                                <Link to='register' className="hover:text-cyan-300 hover:underline">
+                                    Register</Link>
+                            </div>
+                        }
                     </ul>
                 </div>
             </div>
@@ -64,11 +68,15 @@ const NavBar = () => {
                     <Link to='/dashBoard' className="hover:text-cyan-300 hover:underline">
                         DashBoard</Link>
 
-                    <Link to='/login' className="hover:text-cyan-300 hover:underline">
-                        Login</Link>
+                    {user ? <Link to='/dashBoard/profile'>Profile</Link> :
+                        <div>
+                            <Link to='login' className="hover:text-cyan-300 hover:underline">
+                                Login</Link>
 
-                    <Link to='/register' className="hover:text-cyan-300 hover:underline">
-                        Register</Link>
+                            <Link to='register' className="hover:text-cyan-300 hover:underline">
+                                Register</Link>
+                        </div>
+                    }
                 </ul>
 
             </div>
