@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link, NavLink } from 'react-router';
-import { Menu, X } from 'lucide-react';
+import { Menu, UserCircle2, X } from 'lucide-react';
 import image from '../../assets/ticketBari.jpg'
 import useAuth from '../Auth/AuthContext/useAuth';
 
@@ -77,9 +77,11 @@ const NavBar = () => {
 
                 {user ?
                     <div className="dropdown">
-                        <div tabIndex={0} role="button" className="rounded-full">{user.displayName}</div>
-                        <ul tabIndex="-1" className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
-                            <li><a>Profile</a></li>
+                        <div tabIndex={0} role="button" className="rounded-full">{<UserCircle2></UserCircle2>}</div>
+                        <ul tabIndex="" className="dropdown-content menu bg-base-100 -ml-15 rounded-box p-2">
+                            <Link to='/dashboard/profile'>
+                                <li>Profile</li>
+                            </Link>
                             <li onClick={handleLogOut}><a>LogOut</a></li>
                         </ul>
                     </div>

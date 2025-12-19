@@ -10,6 +10,7 @@ import PrivateRoute from "../Component/Root/PrivateRoute";
 import SingleTicket from "../Page/SingleTicket/SingleTicket";
 import DashboardLayout from "./DashboardLayout";
 import DashBoardHome from "../DashBoard/DashBoardHome/DashBoardHome";
+import Profile from "../DashBoard/Profile/Profile";
 
 export const router = createBrowserRouter([{
     path: '/',
@@ -45,12 +46,16 @@ export const router = createBrowserRouter([{
     ]
 },
 {
-    path: 'dashboard',
+    path: '/dashboard',
     element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
     children: [
         {
             index: true,
             Component: DashBoardHome
+        },
+        {
+            path: '/dashboard/profile',
+            Component: Profile
         }
     ]
 }

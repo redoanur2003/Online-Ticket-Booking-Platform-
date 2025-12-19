@@ -1,15 +1,14 @@
 import React from 'react';
 import { CiDeliveryTruck } from 'react-icons/ci';
-import { FaMotorcycle, FaRegCreditCard, FaTasks, FaUsers } from 'react-icons/fa';
+import { FaRegCreditCard } from 'react-icons/fa';
 import { Link, NavLink, Outlet } from 'react-router';
-import { RiEBikeFill } from 'react-icons/ri';
-import { SiGoogletasks } from 'react-icons/si';
 import useRole from '../Hook/UserRole/useRole';
 import logoImg from '../assets/ticketBari.jpg'
-import { Ticket } from 'lucide-react';
+import { Ticket, UserCircle } from 'lucide-react';
 
 const DashboardLayout = () => {
     const { role } = useRole();
+    // console.log("role ", role)
     return (
         <div className="drawer lg:drawer-open max-w-7xl mx-auto ">
             <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
@@ -22,8 +21,11 @@ const DashboardLayout = () => {
                     </label>
                     <div className="px-4">Ticket-Bari Dashboard</div>
                 </nav>
+
                 {/* Page content here */}
-                <Outlet></Outlet>
+                <div className='mt-4'>
+                    <Outlet></Outlet>
+                </div>
 
             </div>
 
@@ -47,6 +49,12 @@ const DashboardLayout = () => {
                         {/* our dashboard links */}
 
                         {role === "user" && <>
+                            <li>
+                                <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="My Profile" to="/dashboard/profile">
+                                    <UserCircle size={16} />
+                                    <span className="is-drawer-close:hidden">My profile </span>
+                                </NavLink>
+                            </li>
                             <li>
                                 <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="My Booked Tickets" to="/dashboard/my-booked-tickets">
                                     <Ticket size={16} />
