@@ -4,7 +4,9 @@ import { FaRegCreditCard } from 'react-icons/fa';
 import { Link, NavLink, Outlet } from 'react-router';
 import useRole from '../Hook/UserRole/useRole';
 import logoImg from '../assets/ticketBari.jpg'
-import { Ticket, UserCircle } from 'lucide-react';
+import { GitPullRequest, Ticket, UserCircle } from 'lucide-react';
+import { MdRequestPage, MdRequestQuote } from "react-icons/md";
+import { FaRegSquarePlus } from 'react-icons/fa6';
 
 const DashboardLayout = () => {
     const { role } = useRole();
@@ -45,16 +47,17 @@ const DashboardLayout = () => {
                                 <span className="is-drawer-close:hidden">Home page</span>
                             </Link>
                         </li>
+                        <li>
+                            <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="My Profile" to="/dashboard/profile">
+                                <UserCircle size={16} />
+                                <span className="is-drawer-close:hidden">My profile </span>
+                            </NavLink>
+                        </li>
 
                         {/* our dashboard links */}
 
                         {role === "user" && <>
-                            <li>
-                                <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="My Profile" to="/dashboard/profile">
-                                    <UserCircle size={16} />
-                                    <span className="is-drawer-close:hidden">My profile </span>
-                                </NavLink>
-                            </li>
+
                             <li>
                                 <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="My Booked Tickets" to="/dashboard/myBookingTickets">
                                     <Ticket size={16} />
@@ -65,6 +68,36 @@ const DashboardLayout = () => {
                                 <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Payment History" to="/dashboard/payment-history">
                                     <FaRegCreditCard />
                                     <span className="is-drawer-close:hidden">Payment History</span>
+                                </NavLink>
+                            </li>
+                        </>
+                        }
+
+                        {role === "vendor" && <>
+
+                            <li>
+                                <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Add Ticket" to="/dashboard/addTicket">
+                                    <FaRegSquarePlus size={16} />
+                                    <span className="is-drawer-close:hidden">Add Ticket</span>
+                                </NavLink>
+                            </li>
+                            <li>
+                                <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="My Added Tickets" to="/dashboard/myAddTickets">
+                                    <Ticket size={16} />
+                                    <span className="is-drawer-close:hidden">My Added Tickets</span>
+                                </NavLink>
+                            </li>
+
+                            <li>
+                                <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip=" Requested Bookings" to="/dashboard/ requestedBookings">
+                                    <GitPullRequest size={16} />
+                                    <span className="is-drawer-close:hidden"> Requested Bookings</span>
+                                </NavLink>
+                            </li>
+                            <li>
+                                <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Revenue Overview" to="/dashboard/revenueOverview ">
+                                    <MdRequestPage size={16} />
+                                    <span className="is-drawer-close:hidden">Revenue Overview </span>
                                 </NavLink>
                             </li>
                         </>

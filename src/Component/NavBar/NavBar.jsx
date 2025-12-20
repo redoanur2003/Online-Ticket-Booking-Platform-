@@ -12,6 +12,7 @@ const NavBar = () => {
     console.log(user)
 
     const handleLogOut = () => {
+        console.log("Log out click")
         logOut()
             .then()
             .catch(error => {
@@ -44,7 +45,7 @@ const NavBar = () => {
                             DashBoard</Link>
 
                         {user ? <Link to='/dashBoard/profile'>Profile</Link> :
-                            <div>
+                            <div className='grid gap-4'>
                                 <Link to='login' className="hover:text-cyan-300 hover:underline">
                                     Login</Link>
 
@@ -69,7 +70,7 @@ const NavBar = () => {
                         DashBoard</Link>
 
                     {user ? <Link to='/dashBoard/profile'>Profile</Link> :
-                        <div>
+                        <div className='flex gap-6'>
                             <Link to='login' className="hover:text-cyan-300 hover:underline">
                                 Login</Link>
 
@@ -90,7 +91,7 @@ const NavBar = () => {
                             <Link to='/dashboard/profile'>
                                 <li>Profile</li>
                             </Link>
-                            <li onClick={handleLogOut}><a>LogOut</a></li>
+                            <button onClick={() => handleLogOut()} className='p-2'>LogOut</button>
                         </ul>
                     </div>
                     :

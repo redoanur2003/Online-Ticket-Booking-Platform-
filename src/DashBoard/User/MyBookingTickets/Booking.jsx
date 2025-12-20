@@ -54,7 +54,8 @@ const Booking = ({ booking }) => {
                 />
 
                 <div className="absolute top-3 right-3 shadow-sm">
-                    {booking.status.toLowerCase() === "pending" && <span className="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-xs font-bold uppercase">Pending</span> ||
+                    {booking.status.toLowerCase() === "pending" && <span className="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-xs font-bold uppercase"><span className="loading loading-ring loading-xs"></span>
+                        Pending</span> ||
                         booking.status.toLowerCase() === "accepted" && <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs font-bold uppercase">Accepted</span> ||
                         booking.status.toLowerCase() === "rejected" && <span className="text-red-800 px-3 py-1 rounded-full text-xs font-bold uppercase">Rejected</span> ||
                         booking.status.toLowerCase() === "paid" && <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-xs font-bold uppercase">Paid</span>}
@@ -117,11 +118,12 @@ const Booking = ({ booking }) => {
 
                     {booking.status.toLowerCase() === 'pending' && (
                         <button className="w-full bg-yellow-300 text-black font-bold py-2 rounded-lg">
+                            <span className="loading loading-ring loading-xs"></span>
                             Waiting for Approval
                         </button>
                     )}
 
-                    {booking.status.toLowerCase() === 'paid' && (
+                    {booking.status.toLowerCase() === 'paid' && isExpired === false && (
                         <button className="w-full bg-white hover:bg-blue-700 text-blue-600 font-bold py-2 rounded-lg  border border-blue-100">
                             Payment Complete
                         </button>

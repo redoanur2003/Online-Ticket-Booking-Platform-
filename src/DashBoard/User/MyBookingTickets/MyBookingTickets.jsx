@@ -14,16 +14,18 @@ const MyBookingTickets = () => {
             return res.data;
         }
     })
+
+    console.log(myBookings);
     return (
         <>
             <div className="min-h-screen bg-gray-50 py-10 px-4 md:px-8">
                 <div className="max-w-7xl mx-auto">
-                    <h1 className="text-3xl font-bold text-gray-800 mb-8">My Booked Tickets</h1>
+                    <h1 className="text-xl md:text-3xl font-bold text-center text-gray-800 mb-8">My Booked Tickets</h1>
 
                     {myBookings.length > 0 ?
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                             {myBookings.map((booking) => (
-                                <Booking booking={booking} ></Booking>
+                                <Booking key={booking._id} booking={booking} ></Booking>
                             ))}
                         </div> :
                         <div className="text-center py-20">
