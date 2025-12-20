@@ -13,6 +13,7 @@ import DashBoardHome from "../DashBoard/DashBoardHome/DashBoardHome";
 import Profile from "../DashBoard/Profile/Profile";
 import MyBookingTickets from "../DashBoard/User/MyBookingTickets/MyBookingTickets";
 import VAddTickets from "../DashBoard/Vendor/VAddTickets/VAddTickets";
+import MyAddTickets from "../DashBoard/Vendor/MyAddTickets/MyAddTickets";
 
 export const router = createBrowserRouter([{
     path: '/',
@@ -69,7 +70,7 @@ export const router = createBrowserRouter([{
         },
         {
             path: '/dashboard/myAddTickets',
-            Component: MyBookingTickets
+            Component: MyAddTickets
         },
         {
             path: '/dashboard/requestedBookings',

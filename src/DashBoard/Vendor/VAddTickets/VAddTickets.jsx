@@ -5,6 +5,7 @@ import { useQuery } from '@tanstack/react-query';
 import UseAxios from '../../../Hook/UseAxios/UseAxios';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router';
 
 const VAddTickets = () => {
     const {
@@ -14,6 +15,7 @@ const VAddTickets = () => {
     } = useForm();
     const { user } = useAuth();
     const axiosApi = UseAxios();
+    const navigate = useNavigate();
 
     const { data: destination = [] } = useQuery({
         queryKey: ["Destination"],
@@ -36,6 +38,7 @@ const VAddTickets = () => {
         const departureTime = new Date(localDateTime).toISOString();
         const verificationStatus = 'pending';
         const isAdvertised = false;
+        const createdAt = new Date();
         let image;
         data.price = parseInt(data.price);
         data.quantity = parseInt(data.quantity);
@@ -58,7 +61,8 @@ const VAddTickets = () => {
             departureTime,
             verificationStatus,
             isAdvertised,
-            image
+            image,
+            createdAt
         };
 
         delete finalData.departureDate;
@@ -76,6 +80,7 @@ const VAddTickets = () => {
                         draggable: true,
                         timer: 1500
                     });
+                    navigate('/dashboard/myAddTickets');
                 }
             })
     }

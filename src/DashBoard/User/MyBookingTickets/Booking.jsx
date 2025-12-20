@@ -7,11 +7,12 @@ const Booking = ({ booking }) => {
     const axios = UseAxios();
     const [timeLeft, setTimeLeft] = useState({});
     const [isExpired, setIsExpired] = useState(false);
+    console.log("id ", booking.ticketId)
 
     const { data: ticket = [] } = useQuery({
         queryKey: ["Tickets", booking.ticketId],
         queryFn: async () => {
-            const res = await axios.get(`/tickets/${booking.ticketId}`);
+            const res = await axios.get(`/tickets/id/${booking.ticketId}`);
             return res.data;
         }
     })

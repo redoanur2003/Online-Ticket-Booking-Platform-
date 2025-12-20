@@ -33,7 +33,8 @@ const AllTIcket = () => {
     console.log(place)
 
     useEffect(() => {
-        setTick(allTicket)
+        const approve = allTicket.filter(at => at.verificationStatus === 'approved');
+        setTick(approve)
     }, [allTicket])
 
 

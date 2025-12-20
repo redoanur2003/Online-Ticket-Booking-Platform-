@@ -18,7 +18,7 @@ const SingleTicket = () => {
     const { refetch, data: ticket = [] } = useQuery({
         queryKey: ["Tickets", id],
         queryFn: async () => {
-            const res = await axios.get(`/tickets/${id}`);
+            const res = await axios.get(`/tickets/id/${id}`);
             return res.data;
         }
     })
