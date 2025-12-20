@@ -15,6 +15,7 @@ import MyBookingTickets from "../DashBoard/User/MyBookingTickets/MyBookingTicket
 import VAddTickets from "../DashBoard/Vendor/VAddTickets/VAddTickets";
 import MyAddTickets from "../DashBoard/Vendor/MyAddTickets/MyAddTickets";
 import RequestBooking from "../DashBoard/Vendor/RequestBooking/RequestBooking";
+import Revenue from "../DashBoard/Vendor/Revenue/Revenue";
 
 export const router = createBrowserRouter([{
     path: '/',
@@ -78,8 +79,8 @@ export const router = createBrowserRouter([{
             Component: RequestBooking
         },
         {
-            path: '/dashboard/revenueOverview',
-            Component: MyBookingTickets
+            path: '/dashboard/revenue',
+            Component: Revenue
         },
     ]
 }

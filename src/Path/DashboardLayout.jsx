@@ -95,7 +95,7 @@ const DashboardLayout = () => {
                                 </NavLink>
                             </li>
                             <li>
-                                <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Revenue Overview" to="/dashboard/revenueOverview ">
+                                <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Revenue Overview" to="/dashboard/revenue">
                                     <MdRequestPage size={16} />
                                     <span className="is-drawer-close:hidden">Revenue Overview </span>
                                 </NavLink>
