@@ -12,6 +12,7 @@ import DashboardLayout from "./DashboardLayout";
 import DashBoardHome from "../DashBoard/DashBoardHome/DashBoardHome";
 import Profile from "../DashBoard/Profile/Profile";
 import MyBookingTickets from "../DashBoard/User/MyBookingTickets/MyBookingTickets";
+import VAddTickets from "../DashBoard/Vendor/VAddTickets/VAddTickets";
 
 export const router = createBrowserRouter([{
     path: '/',
@@ -61,7 +62,23 @@ export const router = createBrowserRouter([{
         {
             path: '/dashboard/myBookingTickets',
             Component: MyBookingTickets
-        }
+        },
+        {
+            path: '/dashboard/addTicket',
+            Component: VAddTickets
+        },
+        {
+            path: '/dashboard/myAddTickets',
+            Component: MyBookingTickets
+        },
+        {
+            path: '/dashboard/requestedBookings',
+            Component: MyBookingTickets
+        },
+        {
+            path: '/dashboard/revenueOverview',
+            Component: MyBookingTickets
+        },
     ]
 }
 ])

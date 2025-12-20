@@ -89,7 +89,7 @@ const DashboardLayout = () => {
                             </li>
 
                             <li>
-                                <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip=" Requested Bookings" to="/dashboard/ requestedBookings">
+                                <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip=" Requested Bookings" to="/dashboard/requestedBookings">
                                     <GitPullRequest size={16} />
                                     <span className="is-drawer-close:hidden"> Requested Bookings</span>
                                 </NavLink>
