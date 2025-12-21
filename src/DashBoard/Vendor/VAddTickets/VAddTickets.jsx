@@ -30,7 +30,7 @@ const VAddTickets = () => {
         Array.isArray(d.districts) ? d.districts : []
     );
 
-    const handleSendParcel = async (data) => {
+    const handleAddTicket = async (data) => {
         if (data.from === data.to) {
             return alert("From and To cannot be the same district");
         }
@@ -89,7 +89,7 @@ const VAddTickets = () => {
         <div>
             <h1 className='text-center font-bold text-2xl'>Add ticket</h1>
 
-            <form onSubmit={handleSubmit(handleSendParcel)} className='mt-12 p-4 text-black'>
+            <form onSubmit={handleSubmit(handleAddTicket)} className='mt-12 p-4 text-black'>
                 {/* two column */}
                 <div className='grid'>
                     <h4 className="text-2xl font-semibold text-center">Ticket Details</h4>

@@ -3,10 +3,12 @@ import useAuth from '../../../Component/Auth/AuthContext/useAuth';
 import UseAxios from '../../../Hook/UseAxios/UseAxios';
 import { useQuery } from '@tanstack/react-query';
 import { Calendar, Edit, MapPin, Trash2 } from 'lucide-react';
+import { useNavigate } from 'react-router';
 
 const MyAddTickets = () => {
     const { user } = useAuth();
     const axios = UseAxios();
+    const navigate = useNavigate();
     const { data: myAddTickets = [] } = useQuery({
         queryKey: ["Tickets", user.email],
         queryFn: async () => {
@@ -27,7 +29,7 @@ const MyAddTickets = () => {
 
     const handleUpdate = (id) => {
         console.log(id);
-
+        navigate(`/dashboard/updateTicket/${id}`);
     };
 
     return (
