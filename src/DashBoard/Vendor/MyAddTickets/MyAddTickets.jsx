@@ -4,12 +4,13 @@ import UseAxios from '../../../Hook/UseAxios/UseAxios';
 import { useQuery } from '@tanstack/react-query';
 import { Calendar, Edit, MapPin, Trash2 } from 'lucide-react';
 import { useNavigate } from 'react-router';
+import Swal from 'sweetalert2';
 
 const MyAddTickets = () => {
     const { user } = useAuth();
     const axios = UseAxios();
     const navigate = useNavigate();
-    const { data: myAddTickets = [] } = useQuery({
+    const { refetch, data: myAddTickets = [] } = useQuery({
         queryKey: ["Tickets", user.email],
         queryFn: async () => {
             const res = await axios.get(`/tickets/user/${user.email}`);
@@ -25,6 +26,19 @@ const MyAddTickets = () => {
 
     const handleDelete = (id) => {
         console.log(id);
+        axios.delete(`/tickets/delete/${id}`)
+            .then(res => {
+                if (res.data.deletedCount > 0) {
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'Ticket Updated Successfully',
+                        timer: 1500,
+                        showConfirmButton: false
+                    });
+                    refetch();
+                }
+            })
     };
 
     const handleUpdate = (id) => {
@@ -55,10 +69,10 @@ const MyAddTickets = () => {
                                 />
                                 <div className="absolute top-3 right-3">
                                     {
-                                        ticket.verificationStatus.toLowerCase() === "pending" && <span className="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-xs font-bold uppercase"><span className="loading loading-ring loading-xs"></span>
+                                        ticket.verificationStatus === "pending" && <span className="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-xs font-bold uppercase"><span className="loading loading-ring loading-xs"></span>
                                             Pending</span>}
-                                    {ticket.verificationStatus.toLowerCase() === "approved" && <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs font-bold uppercase">Accepted</span>}
-                                    {ticket.verificationStatus.toLowerCase() === "rejected" && <span className="text-red-800 px-3 py-1 rounded-full text-xs font-bold uppercase">Rejected</span>}
+                                    {ticket.verificationStatus === "approved" && <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs font-bold uppercase">Accepted</span>}
+                                    {ticket.verificationStatus === "rejected" && <span className="text-red-800 px-3 py-1 rounded-full text-xs font-bold uppercase">Rejected</span>}
                                 </div>
                             </div>
 

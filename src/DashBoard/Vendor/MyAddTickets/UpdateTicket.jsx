@@ -96,6 +96,7 @@ const UpdateTicket = () => {
             perks: data.perks || [],
             vendorName: data.vendorName,
             vendorEmail: data.vendorEmail,
+            verificationStatus: data.verificationStatus,
             departureTime,
             image
         };

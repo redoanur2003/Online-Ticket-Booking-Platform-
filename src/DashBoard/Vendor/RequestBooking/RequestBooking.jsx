@@ -88,7 +88,7 @@ const RequestBooking = () => {
                                             </td>
 
                                             <td className="px-6 py-4 font-bold text-gray-800">
-                                                ৳{req.totalPrice.toLocaleString()}
+                                                ৳{req.totalPrice}
                                             </td>
 
                                             <td className="px-6 py-4 text-center">
