@@ -98,7 +98,7 @@ const SingleTicket = () => {
             email: user.email,
             bookQuantity: bookQuantity,
             totalPrice: bookQuantity * ticket.price,
-            status: "Pending"
+            status: "pending"
         };
         // console.log(bookingData.bookQuantity);
 

@@ -16,20 +16,33 @@ const DashboardLayout = () => {
 
     // console.log("role ", role)
     const handleLogOut = () => {
-        console.log("Log out click")
-        logOut()
-            .then(() => {
-                Swal.fire({
-                    position: 'top-right',
-                    title: "LogOut",
-                    icon: "success",
-                    draggable: true,
-                    timer: 1000
-                });
-            })
-            .catch(error => {
-                alert(error);
-            })
+        // console.log("Log out click")
+        Swal.fire({
+            title: "Agree Sure to LogOut?",
+            text: `You will be LogOut!!`,
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Confirm!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                logOut()
+                    .then(() => {
+                        Swal.fire({
+                            position: 'top-right',
+                            title: "LogOut",
+                            icon: "success",
+                            draggable: true,
+                            timer: 1000
+                        })
+                    })
+                    .catch(error => {
+                        alert(error);
+                    })
+
+            }
+        });
     }
     return (
         <div className="drawer lg:drawer-open max-w-7xl mx-auto ">

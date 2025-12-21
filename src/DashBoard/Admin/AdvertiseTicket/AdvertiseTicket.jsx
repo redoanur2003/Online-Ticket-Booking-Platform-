@@ -9,6 +9,7 @@ const AdvertiseTicket = () => {
     const axios = UseAxios();
     const [advertised, setAdvertised] = useState([]);
     const [totalAdver, setTotalAdver] = useState(0);
+    const [accepted, setAccepted] = useState([]);
     const { refetch, data: tickets = [] } = useQuery({
         queryKey: ["Tickets",],
         queryFn: async () => {
@@ -17,11 +18,19 @@ const AdvertiseTicket = () => {
         }
     })
 
+    //for approved
+    useEffect(() => {
+        const advTicket = tickets.filter(at => at.verificationStatus === 'approved');
+        setAccepted(advTicket);
+    }, [tickets]);
+
+    //for add
     useEffect(() => {
         const advTicket = tickets.filter(at => at.isAdvertised === true);
         setAdvertised(advTicket);
-        setTotalAdver(advTicket.length)
+        setTotalAdver(advTicket.length);
     }, [tickets]);
+
 
     console.log(totalAdver);
 
@@ -79,6 +88,7 @@ const AdvertiseTicket = () => {
                     <div className="mb-8">
                         <h1 className="text-3xl font-bold text-gray-800">Advertise Ticket</h1>
                         <p className="text-gray-500">Add Advertise Ticket </p>
+                        <p className="text-black">Total Ticket: {accepted.length} </p>
                     </div>
 
                     {/* Table Container */}
@@ -101,7 +111,7 @@ const AdvertiseTicket = () => {
 
                                     {/* Table Body */}
                                     <tbody className="divide-y divide-gray-100 text-sm">
-                                        {tickets.map((req) => (
+                                        {accepted.map((req) => (
                                             <tr key={req._id} className="hover:bg-gray-50 transition-colors">
 
                                                 {/*  title  */}
@@ -140,34 +150,20 @@ const AdvertiseTicket = () => {
                                                     {req.isAdvertised === false ? (
                                                         <div className="flex items-center justify-center gap-2">
                                                             <button
-                                                                className=" p-2 rounded-lg transition-colors flex items-center gap-1 text-xs font-bold px-3"
+                                                                onClick={() => handleStatus(req._id, true)}
+                                                                className="bg-green-100 text-green-600 hover:bg-green-200 hover:text-green-800 p-2 rounded-lg transition-colors flex items-center gap-1 text-xs font-bold px-3"
                                                                 title="Accept Request"
                                                             >
-                                                                {req.verificationStatus === 'approved' ? <button onClick={() => handleStatus(req._id, true)}
-                                                                    className='flex "bg-green-100 text-green-600 hover:bg-green-200 hover:text-green-800'> <MdDone size={16} /> Make for Advertised.Add it.</button> :
-                                                                    <div>
-                                                                        {req.verificationStatus === 'pending' ? <h1 className='text-yellow-400 p-1  hover:bg-yellow-200 hover:text-yellow-800'> This ticket are not accepted</h1> :
-                                                                            <div>
-                                                                                {req.verificationStatus === 'rejected' && <h1 className='text-red-600  p-1 hover:bg-red-200 hover:text-red-800'>This ticket is rejected</h1>}
-                                                                            </div>}
-                                                                    </div>
-                                                                }
+                                                                <MdDone size={16} /> Advertised.
                                                             </button>
                                                         </div>
                                                     ) :
                                                         <button
-                                                            className="p-2 rounded-lg transition-colors flex items-center gap-1 text-xs font-bold px-3"
+                                                            onClick={() => handleStatus(req._id, false)}
+                                                            className="bg-red-100 text-red-600 hover:bg-red-200 hover:text-red-800 p-2 rounded-lg transition-colors flex items-center gap-1 text-xs font-bold px-3"
                                                             title="Reject Request"
                                                         >
-                                                            {req.verificationStatus === 'approved' ? <button onClick={() => handleStatus(req._id, false)}
-                                                                className='flex bg-red-100 text-red-600 hover:bg-red-200 hover:text-red-800 '> <X size={16} /> Already Advertised.Cancel it.</button> :
-                                                                <div>
-                                                                    {req.verificationStatus === 'pending' ? <h1 className='text-yellow-400 p-1 hover:bg-yellow-200 hover:text-yellow-800'> This ticket are not accepted</h1> :
-                                                                        <div>
-                                                                            {req.verificationStatus === 'rejected' && <h1 className='text-red-600 p-1 hover:bg-red-200 hover:text-red-800'>This ticket is rejected</h1>}
-                                                                        </div>}
-                                                                </div>
-                                                            }
+                                                            <X size={16} /> UnAdvertised.
                                                         </button>
                                                     }
                                                 </td>

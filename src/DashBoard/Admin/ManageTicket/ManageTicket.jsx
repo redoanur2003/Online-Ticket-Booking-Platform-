@@ -127,7 +127,7 @@ const ManageTicket = () => {
                                                 </td>
 
                                                 <td className="px-6 py-4 text-center">
-                                                    {req.verificationStatus.toLowerCase() === 'pending' ? (
+                                                    {req.verificationStatus === 'pending' ? (
                                                         <div className="flex items-center justify-center gap-2">
                                                             <button
                                                                 onClick={() => handleStatus(req._id, 'approved')}
@@ -148,8 +148,7 @@ const ManageTicket = () => {
                                                     ) : (
                                                         // Status Badge if already processed
                                                         <span className={`px-3 py-1 rounded-full text-xs font-bold uppercase
-                          ${req.verificationStatus.toLowerCase() === 'approved' ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}
-                        `}>
+                                                           ${req.verificationStatus === 'approved' ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
                                                             {req.verificationStatus}
                                                         </span>
                                                     )}

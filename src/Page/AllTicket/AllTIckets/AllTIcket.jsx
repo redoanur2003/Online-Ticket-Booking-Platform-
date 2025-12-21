@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import UseAxios from '../../../Hook/UseAxios/UseAxios';
 import { useQuery } from '@tanstack/react-query';
 import { FaBangladeshiTakaSign, FaLocationArrow, FaLocationPin } from 'react-icons/fa6';
@@ -22,22 +22,37 @@ const AllTIcket = () => {
         }
     })
 
-    const { data: place = [] } = useQuery({
-        queryKey: ["Place"],
+    const { data: user = [] } = useQuery({
+        queryKey: ["user"],
         queryFn: async () => {
-            const res = await axios.get("/destination");
+            const res = await axios.get("/users");
             return res.data;
         }
     })
 
-    console.log(place)
+
+    const vendors = useMemo(() => {
+        return user
+            .filter(u => u.role?.toLowerCase() === 'fraud')
+            .map(u => u.email);
+    }, [user]);
 
     useEffect(() => {
-        const approve = allTicket.filter(at => at.verificationStatus === 'approved');
-        setTick(approve)
-    }, [allTicket])
+        if (!allTicket.length) return;
 
+        let filtered = allTicket.filter(
+            t => t.verificationStatus === 'approved'
+        );
 
+        // hide fraud vendor tickets
+        filtered = filtered.filter(
+            t => !vendors.includes(t.vendorEmail)
+        );
+
+        setTick(filtered);
+    }, [allTicket, vendors, type]);
+
+    //handel select
     const handleSelect = (selectedItem) => {
         if (type === selectedItem) {
             setType('');
@@ -71,8 +86,7 @@ const AllTIcket = () => {
                         tick.map((ticket) => (
                             <div
                                 key={ticket._id}
-                                className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col h-full border p-3 border-gray-100"
-                            >
+                                className={`bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col h-full border p-3 border-gray-100`}>
                                 <div className="relative h-52 w-full">
                                     <img
                                         className="w-full h-full object-cover rounded-2xl"
