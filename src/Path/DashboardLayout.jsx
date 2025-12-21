@@ -4,9 +4,9 @@ import { FaRegCreditCard } from 'react-icons/fa';
 import { Link, NavLink, Outlet } from 'react-router';
 import useRole from '../Hook/UserRole/useRole';
 import logoImg from '../assets/ticketBari.jpg'
-import { GitPullRequest, LogOut, Ticket, UserCircle } from 'lucide-react';
-import { MdRequestPage, MdRequestQuote } from "react-icons/md";
-import { FaRegSquarePlus } from 'react-icons/fa6';
+import { GitPullRequest, LogOut, Ticket, TicketCheck, User, UserCircle } from 'lucide-react';
+import { MdRequestPage } from "react-icons/md";
+import { FaRectangleAd, FaRegSquarePlus } from 'react-icons/fa6';
 import useAuth from '../Component/Auth/AuthContext/useAuth';
 import Swal from 'sweetalert2';
 
@@ -118,6 +118,30 @@ const DashboardLayout = () => {
                                 <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Revenue Overview" to="/dashboard/revenue">
                                     <MdRequestPage size={16} />
                                     <span className="is-drawer-close:hidden">Revenue Overview </span>
+                                </NavLink>
+                            </li>
+                        </>
+                        }
+
+                        {role === "admin" && <>
+
+                            <li>
+                                <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Manage Ticket" to="/dashboard/manageTickets">
+                                    <TicketCheck size={16} />
+                                    <span className="is-drawer-close:hidden">Manage Tickets</span>
+                                </NavLink>
+                            </li>
+                            <li>
+                                <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Manage Users" to="/dashboard/manageUsers">
+                                    <User size={16} />
+                                    <span className="is-drawer-close:hidden">Manage Users</span>
+                                </NavLink>
+                            </li>
+
+                            <li>
+                                <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip=" Advertise Tickets" to="/dashboard/advertiseTickets">
+                                    <FaRectangleAd size={16}></FaRectangleAd>
+                                    <span className="is-drawer-close:hidden"> Advertise Tickets</span>
                                 </NavLink>
                             </li>
                         </>
