@@ -18,7 +18,7 @@ const UpdateTicket = () => {
         setValue
     } = useForm();
 
-    /* ================= DESTINATION ================= */
+    //destination api
     const { data: destination = [] } = useQuery({
         queryKey: ['Destination'],
         queryFn: async () => {
@@ -31,7 +31,6 @@ const UpdateTicket = () => {
         Array.isArray(d.districts) ? d.districts : []
     );
 
-    /* ================= SINGLE TICKET ================= */
     const { data: ticket = {} } = useQuery({
         queryKey: ['Ticket', id],
         queryFn: async () => {
@@ -40,7 +39,9 @@ const UpdateTicket = () => {
         }
     });
 
-    /* ================= SET DEFAULT VALUES ================= */
+    // console.log(ticket);
+
+    // SET DEFAULT VALUES 
     useEffect(() => {
         if (ticket?._id) {
             reset({
@@ -75,7 +76,7 @@ const UpdateTicket = () => {
 
         let image = ticket.image;
 
-        /* ===== OPTIONAL IMAGE UPDATE ===== */
+        //OPTIONAL IMAGE UPDATE
         if (data.photo?.length) {
             const formData = new FormData();
             formData.append('image', data.photo[0]);
@@ -96,7 +97,7 @@ const UpdateTicket = () => {
             perks: data.perks || [],
             vendorName: data.vendorName,
             vendorEmail: data.vendorEmail,
-            verificationStatus: data.verificationStatus,
+            verificationStatus: ticket.verificationStatus,
             departureTime,
             image
         };

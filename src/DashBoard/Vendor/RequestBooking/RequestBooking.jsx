@@ -4,10 +4,11 @@ import { useQuery } from '@tanstack/react-query';
 import { Check, Mail, Ticket, User, X } from 'lucide-react';
 import Title from './FindingInfo/Title';
 import Userinfo from './FindingInfo/Userinfo';
+import Swal from 'sweetalert2';
 
 const RequestBooking = () => {
     const axios = UseAxios();
-    const { data: requestedTicket = [] } = useQuery({
+    const { refetch, data: requestedTicket = [] } = useQuery({
         queryKey: ["Tickets",],
         queryFn: async () => {
             const res = await axios.get(`/ticketPurchaseInfo`);
@@ -17,15 +18,24 @@ const RequestBooking = () => {
     console.log(requestedTicket);
 
     //accept
-    const handleAccept = (id) => {
-        console.log(id);
+    const handleStatus = (id, status) => {
+        // console.log(id, status);
+        const data = { status };
+        axios.patch(`/ticketPurchaseInfo/status/${id}`, data)
+            .then(res => {
+                if (res.data.modifiedCount > 0) {
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: `${status} update successfully`,
+                        timer: 1500,
+                        showConfirmButton: false
+                    });
+                    refetch();
+                }
+            })
     };
 
-    //  Reject Booking
-    const handleReject = (id) => {
-        console.log(id);
-
-    };
 
     return (
         <div className="p-6 bg-gray-50 min-h-screen">
@@ -95,7 +105,7 @@ const RequestBooking = () => {
                                                 {req.status.toLowerCase() === 'pending' ? (
                                                     <div className="flex items-center justify-center gap-2">
                                                         <button
-                                                            onClick={() => handleAccept(req.id)}
+                                                            onClick={() => handleStatus(req._id, 'accepted')}
                                                             className="bg-green-100 text-green-600 hover:bg-green-200 hover:text-green-800 p-2 rounded-lg transition-colors flex items-center gap-1 text-xs font-bold px-3"
                                                             title="Accept Request"
                                                         >
@@ -103,7 +113,7 @@ const RequestBooking = () => {
                                                         </button>
 
                                                         <button
-                                                            onClick={() => handleReject(req.id)}
+                                                            onClick={() => handleStatus(req._id, 'rejected')}
                                                             className="bg-red-100 text-red-600 hover:bg-red-200 hover:text-red-800 p-2 rounded-lg transition-colors flex items-center gap-1 text-xs font-bold px-3"
                                                             title="Reject Request"
                                                         >

@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { Link, NavLink } from 'react-router';
-import { Menu, UserCircle2, X } from 'lucide-react';
+import { LogOut, Menu, UserCircle2, X } from 'lucide-react';
 import image from '../../assets/ticketBari.jpg'
 import useAuth from '../Auth/AuthContext/useAuth';
+import Swal from 'sweetalert2';
 
 
 const NavBar = () => {
@@ -14,7 +15,15 @@ const NavBar = () => {
     const handleLogOut = () => {
         console.log("Log out click")
         logOut()
-            .then()
+            .then(() => {
+                Swal.fire({
+                    position: 'top-right',
+                    title: "LogOut",
+                    icon: "success",
+                    draggable: true,
+                    timer: 1000
+                });
+            })
             .catch(error => {
                 alert(error);
             })
@@ -89,9 +98,9 @@ const NavBar = () => {
                         <div tabIndex={0} role="button" className="rounded-full">{<UserCircle2></UserCircle2>}</div>
                         <ul tabIndex="" className="dropdown-content menu bg-base-100 -ml-15 rounded-box p-2">
                             <Link to='/dashboard/profile'>
-                                <li>Profile</li>
+                                <li className='p-2 hover:shadow-lg'>Profile</li>
                             </Link>
-                            <button onClick={() => handleLogOut()} className='p-2'>LogOut</button>
+                            <button onClick={() => handleLogOut()} className='p-2 flex btn btn-primary text-black'> <LogOut size={16}></LogOut>LogOut</button>
                         </ul>
                     </div>
                     :

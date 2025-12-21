@@ -4,13 +4,33 @@ import { FaRegCreditCard } from 'react-icons/fa';
 import { Link, NavLink, Outlet } from 'react-router';
 import useRole from '../Hook/UserRole/useRole';
 import logoImg from '../assets/ticketBari.jpg'
-import { GitPullRequest, Ticket, UserCircle } from 'lucide-react';
+import { GitPullRequest, LogOut, Ticket, UserCircle } from 'lucide-react';
 import { MdRequestPage, MdRequestQuote } from "react-icons/md";
 import { FaRegSquarePlus } from 'react-icons/fa6';
+import useAuth from '../Component/Auth/AuthContext/useAuth';
+import Swal from 'sweetalert2';
 
 const DashboardLayout = () => {
     const { role } = useRole();
+    const { logOut } = useAuth();
+
     // console.log("role ", role)
+    const handleLogOut = () => {
+        console.log("Log out click")
+        logOut()
+            .then(() => {
+                Swal.fire({
+                    position: 'top-right',
+                    title: "LogOut",
+                    icon: "success",
+                    draggable: true,
+                    timer: 1000
+                });
+            })
+            .catch(error => {
+                alert(error);
+            })
+    }
     return (
         <div className="drawer lg:drawer-open max-w-7xl mx-auto ">
             <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
@@ -109,6 +129,13 @@ const DashboardLayout = () => {
                                 {/* Settings icon */}
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" strokeLinejoin="round" strokeLinecap="round" strokeWidth="2" fill="none" stroke="currentColor" className="my-1.5 inline-block size-4"><path d="M20 7h-9"></path><path d="M14 17H5"></path><circle cx="17" cy="17" r="3"></circle><circle cx="7" cy="7" r="3"></circle></svg>
                                 <span className="is-drawer-close:hidden">Settings</span>
+                            </button>
+                        </li>
+                        <li>
+                            <button onClick={() => handleLogOut()} className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="LogOut">
+                                {/* Settings icon */}
+                                <LogOut size={16}></LogOut>
+                                <span className="is-drawer-close:hidden">LogOut</span>
                             </button>
                         </li>
                     </ul>
