@@ -17,6 +17,9 @@ import MyAddTickets from "../DashBoard/Vendor/MyAddTickets/MyAddTickets";
 import RequestBooking from "../DashBoard/Vendor/RequestBooking/RequestBooking";
 import Revenue from "../DashBoard/Vendor/Revenue/Revenue";
 import UpdateTicket from "../DashBoard/Vendor/MyAddTickets/UpdateTicket";
+import ManageTicket from "../DashBoard/Admin/ManageTicket/ManageTicket";
+import ManageUser from "../DashBoard/Admin/ManageUser/ManageUser";
+import AdvertiseTicket from "../DashBoard/Admin/AdvertiseTicket/AdvertiseTicket";
 
 export const router = createBrowserRouter([{
     path: '/',
@@ -86,6 +89,18 @@ export const router = createBrowserRouter([{
         {
             path: '/dashboard/revenue',
             Component: Revenue
+        },
+        {
+            path: '/dashboard/manageTickets',
+            Component: ManageTicket
+        },
+        {
+            path: '/dashboard/manageUsers',
+            Component: ManageUser
+        },
+        {
+            path: '/dashboard/advertiseTickets',
+            Component: AdvertiseTicket
         },
     ]
 }
