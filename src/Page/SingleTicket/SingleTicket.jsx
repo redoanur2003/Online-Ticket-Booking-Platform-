@@ -148,8 +148,8 @@ const SingleTicket = () => {
     const isButtonDisabled = isExpired || ticket.quantity === 0;
 
     return (
-        <div className="min-h-screen bg-gray-50 py-10 px-4 md:px-8">
-            <div className="max-w-5xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden grid grid-cols-1 lg:grid-cols-2">
+        <div className="min-h-screen py-10 px-4 md:px-8">
+            <div className="max-w-5xl mx-auto  rounded-2xl shadow-xl overflow-hidden grid grid-cols-1 lg:grid-cols-2">
 
                 {/* Image & Countdown */}
                 <div className="relative h-64 lg:h-auto">
@@ -158,7 +158,7 @@ const SingleTicket = () => {
                         alt={ticket.title}
                         className="w-full h-full object-cover"
                     />
-                    <div className="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-sm font-bold text-blue-600 flex items-center gap-1">
+                    <div className="absolute top-4 left-4 /90 backdrop-blur px-3 py-1 rounded-full text-sm font-bold bg-base-100 flex items-center gap-1">
                         {ticket.transportType?.toLowerCase() === 'bus' && <Bus size={16} /> || ticket.transportType?.toLowerCase() === 'train' && <Train size={16} /> ||
                             ticket.transportType?.toLowerCase() === 'plane' && <Plane size={16} /> || ticket.transportType?.toLowerCase() === 'launch' && <IoIosBoat size={16} />}
                         {/* {transportIcons[ticket.transportType?.toLowerCase()]} */}
@@ -167,8 +167,8 @@ const SingleTicket = () => {
 
                     {/* Countdown Overlay */}
                     {!isExpired ? (
-                        <div className="absolute bottom-0 left-0 right-0 bg-black/70 text-white p-4 text-center backdrop-blur-sm">
-                            <p className="text-xs uppercase tracking-widest mb-1 text-gray-300">Departure In</p>
+                        <div className="absolute bottom-0 left-0 right-0 /70  p-4 text-center backdrop-blur-sm">
+                            <p className="text-xs uppercase tracking-widest mb-1 ">Departure In</p>
                             <div className="flex justify-center gap-4 text-xl font-mono font-bold">
                                 <span>{timeLeft.days || 0}d</span>
                                 <span>{timeLeft.hours || 0}h</span>
@@ -177,7 +177,7 @@ const SingleTicket = () => {
                             </div>
                         </div>
                     ) : (
-                        <div className="absolute bottom-0 left-0 right-0 bg-red-600/90 text-white p-4 text-center">
+                        <div className="absolute bottom-0 left-0 right-0 bg-red-600/90  p-4 text-center">
                             <p className="font-bold flex items-center justify-center gap-2">
                                 <AlertCircle size={20} /> Departure Time Passed
                             </p>
@@ -189,29 +189,29 @@ const SingleTicket = () => {
                 <div className="p-8 flex flex-col justify-between">
                     <div>
                         <div className="flex justify-between items-start">
-                            <h1 className="text-3xl font-bold text-gray-800 mb-2">{ticket.title}</h1>
+                            <h1 className="text-3xl font-bold  mb-2">{ticket.title}</h1>
                             <span className="bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-0.5 rounded border border-green-400">
                                 {ticket.verificationStatus}
                             </span>
                         </div>
 
                         {/* Route Info */}
-                        <div className="flex items-center gap-2 text-gray-600 mb-6 text-lg">
+                        <div className="flex items-center gap-2  mb-6 text-lg">
                             <MapPin className="text-red-500" />
                             <span className="font-medium">{ticket.from}</span>
-                            <span className="text-gray-400">→</span>
+                            <span className="">→</span>
                             <span className="font-medium">{ticket.to}</span>
                         </div>
 
                         {/* Price & Seats */}
-                        <div className="grid grid-cols-2 gap-4 mb-6 bg-blue-50 p-4 rounded-xl border border-blue-100">
+                        <div className="grid grid-cols-2 gap-4 mb-6 p-4 rounded-xl border border-blue-100">
                             <div>
-                                <p className="text-sm text-gray-500">Price per Ticket</p>
-                                <p className="text-2xl font-bold flex text-blue-600"><FaBangladeshiTakaSign />{ticket.price}</p>
+                                <p className="text-sm ">Price per Ticket</p>
+                                <p className="text-2xl font-bold flex "><FaBangladeshiTakaSign />{ticket.price}</p>
                             </div>
                             <div>
-                                <p className="text-sm text-gray-500">Available Seats</p>
-                                <p className={`text-2xl font-bold ${ticket.quantity < 5 ? 'text-red-500' : 'text-gray-800'}`}>
+                                <p className="text-sm ">Available Seats</p>
+                                <p className={`text-2xl font-bold ${ticket.quantity < 5 ? 'text-red-500' : ''}`}>
                                     {ticket.quantity}
                                 </p>
                             </div>
@@ -219,23 +219,23 @@ const SingleTicket = () => {
 
                         {/* Departure Info */}
                         <div className="mb-6 space-y-2">
-                            <div className="flex items-center gap-2 text-gray-700">
-                                <Calendar size={18} className="text-gray-400" />
+                            <div className="flex items-center gap-2">
+                                <Calendar size={18} className="" />
                                 <span>Departure Date: <strong>{new Date(ticket.departureTime).toLocaleDateString()}</strong></span>
                             </div>
-                            <div className="flex items-center gap-2 text-gray-700">
-                                <Clock size={18} className="text-gray-400" />
+                            <div className="flex items-center gap-2 ">
+                                <Clock size={18} className="" />
                                 <span>Departure Time: <strong>{new Date(ticket.departureTime).toLocaleTimeString()}</strong></span>
                             </div>
                         </div>
 
                         {/* Perks */}
                         <div className="mb-8">
-                            <h3 className="text-sm font-semibold text-gray-400 uppercase tracking-wide mb-3">Perks & Amenities</h3>
+                            <h3 className="text-sm font-semibold  uppercase tracking-wide mb-3">Perks & Amenities</h3>
                             <div className="flex flex-wrap gap-2">
                                 {ticket?.perks?.map((perk, index) => (
-                                    <span key={index} className="flex items-center gap-1 bg-gray-100 text-gray-600 px-3 py-1 rounded-full text-sm">
-                                        <CheckCircle size={14} className="text-green-500" /> {perk}
+                                    <span key={index} className="flex items-center gap-1  px-3 py-1 rounded-full text-sm">
+                                        <CheckCircle size={14} className="" /> {perk}
                                     </span>
                                 ))}
                             </div>
@@ -246,10 +246,10 @@ const SingleTicket = () => {
                     <button
                         onClick={() => setIsModalOpen(true)}
                         disabled={isButtonDisabled}
-                        className={`w-full py-4 rounded-xl font-bold text-lg transition-all transform active:scale-95 shadow-lg
+                        className={`w-full py-4 rounded-xl  font-bold text-lg btn btn-primary transition-all transform active:scale-95 shadow-lg
               ${isButtonDisabled
-                                ? 'bg-gray-300 text-gray-500 cursor-not-allowed shadow-none'
-                                : 'bg-linear-to-r from-blue-600 to-indigo-600 text-white hover:from-blue-700 hover:to-indigo-700 hover:shadow-xl'
+                                ? 'cursor-not-allowed shadow-none'
+                                : ' hover:from-blue-700 hover:to-indigo-700 hover:shadow-xl'
                             }`}
                     >
                         {isExpired
@@ -262,14 +262,14 @@ const SingleTicket = () => {
             </div>
 
             {isModalOpen && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
-                    <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md p-6 transform transition-all scale-100">
-                        <h2 className="text-2xl font-bold text-gray-800 mb-1">Confirm Booking</h2>
-                        <p className="text-gray-500 mb-6">Select how many tickets you want to book.</p>
+                <div className="fixed inset-0 z-50 bg-black/60  flex items-center justify-center  backdrop-blur-sm p-4">
+                    <div className=" rounded-2xl shadow-2xl w-full border-white max-w-md p-6 transform transition-all scale-100">
+                        <h2 className="text-2xl font-bold  mb-1">Confirm Booking</h2>
+                        <p className=" mb-6">Select how many tickets you want to book.</p>
 
                         <form onSubmit={handleBookingSubmit}>
                             <div className="mb-4">
-                                <label className="block text-sm font-medium text-gray-700 mb-2">Quantity (Max: {ticket.quantity})</label>
+                                <label className="block text-sm font-medium mb-2">Quantity (Max: {ticket.quantity})</label>
                                 <input
                                     type="number"
                                     value={bookQuantity}
@@ -280,22 +280,22 @@ const SingleTicket = () => {
                             </div>
 
                             {/* Total Price Calculation */}
-                            <div className="bg-gray-50 p-4 rounded-lg mb-6 flex justify-between items-center">
-                                <span className="text-gray-600">Total Price:</span>
-                                <span className="text-xl font-bold text-blue-600">৳{bookQuantity * ticket.price}</span>
+                            <div className="p-4 rounded-lg mb-6 flex gap-1 items-center">
+                                <span className="">Total Price:</span>
+                                <span className="text-xl font-bold">৳{bookQuantity * ticket.price}</span>
                             </div>
 
                             <div className="flex gap-3">
                                 <button
                                     type="button"
                                     onClick={() => setIsModalOpen(false)}
-                                    className="flex-1 py-3 rounded-lg border border-gray-300 text-gray-700 font-medium hover:bg-gray-50 transition-colors"
+                                    className="flex-1 py-3 rounded-lg border btn border-gray-300  font-medium hover:btn-primary transition-colors"
                                 >
                                     Cancel
                                 </button>
                                 <button
                                     type="submit"
-                                    className="flex-1 py-3 rounded-lg bg-blue-600 text-white font-bold hover:bg-blue-700 transition-colors shadow-md"
+                                    className="flex-1 py-3 rounded-lg btn border-gray-300 font-bold hover:btn-primary transition-colors shadow-md"
                                 >
                                     Confirm Booking
                                 </button>

@@ -47,18 +47,18 @@ const MyAddTickets = () => {
     };
 
     return (
-        <div className="p-6 bg-gray-50 min-h-screen">
+        <div className="p-6 min-h-screen">
             <div className="max-w-7xl mx-auto">
                 <div className="flex justify-between items-center mb-8">
-                    <h1 className="text-3xl font-bold text-gray-800">My Added Tickets</h1>
-                    <span className="text-gray-500 text-sm">Manage your inventory and status</span>
+                    <h1 className="text-3xl font-bold ">My Added Tickets</h1>
+                    <span className=" text-sm">Manage your inventory and status</span>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {sortedTickets.map((ticket) => (
                         <div
                             key={ticket._id}
-                            className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 flex flex-col h-full hover:shadow-lg transition-shadow duration-300"
+                            className=" rounded-xl shadow-md overflow-hidden border border-gray-100 flex flex-col h-full hover:shadow-lg transition-shadow duration-300"
                         >
 
                             <div className="relative h-48">
@@ -69,41 +69,41 @@ const MyAddTickets = () => {
                                 />
                                 <div className="absolute top-3 right-3">
                                     {
-                                        ticket.verificationStatus === "pending" && <span className="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-xs font-bold uppercase"><span className="loading loading-ring loading-xs"></span>
+                                        ticket.verificationStatus === "pending" && <span className="text-yellow-800 px-3 py-1 rounded-full text-xs font-bold uppercase"><span className="loading loading-ring loading-xs"></span>
                                             Pending</span>}
-                                    {ticket.verificationStatus === "approved" && <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs font-bold uppercase">Accepted</span>}
+                                    {ticket.verificationStatus === "approved" && <span className=" text-blue-800 px-3 py-1 rounded-full text-xs font-bold uppercase">Accepted</span>}
                                     {ticket.verificationStatus === "rejected" && <span className="text-red-800 px-3 py-1 rounded-full text-xs font-bold uppercase">Rejected</span>}
                                 </div>
                             </div>
 
                             <div className="p-5 flex flex-col grow">
-                                <h3 className="text-xl font-bold text-gray-800 mb-2 truncate" title={ticket.title}>
+                                <h3 className="text-xl font-bold  mb-2 truncate" title={ticket.title}>
                                     {ticket.title}
                                 </h3>
 
-                                <div className="flex items-center gap-2 text-gray-600 mb-3 text-sm">
-                                    <MapPin size={16} className="text-red-500 shrink-0" />
+                                <div className="flex items-center gap-2  mb-3 text-sm">
+                                    <MapPin size={16} className="shrink-0" />
                                     <span className="font-medium">{ticket.from}</span>
                                     <span>→</span>
                                     <span className="font-medium">{ticket.to}</span>
                                 </div>
 
 
-                                <div className="flex items-center gap-2 text-gray-500 mb-4 text-xs">
+                                <div className="flex items-center gap-2  mb-4 text-xs">
                                     <Calendar size={14} />
                                     {new Date(ticket.departureTime).toLocaleDateString()}
                                     <span className="mx-1">•</span>
                                     {new Date(ticket.departureTime).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                                 </div>
 
-                                <div className="grid grid-cols-2 gap-3 mb-4 bg-gray-50 p-3 rounded-lg border border-gray-100">
+                                <div className="grid grid-cols-2 gap-3 mb-4 p-3 rounded-lg border border-gray-100">
                                     <div>
-                                        <p className="text-xs text-gray-500 uppercase">Price</p>
-                                        <p className="font-bold text-blue-600">৳{ticket.price}</p>
+                                        <p className="text-xs  uppercase">Price</p>
+                                        <p className="font-bold">৳{ticket.price}</p>
                                     </div>
                                     <div>
-                                        <p className="text-xs text-gray-500 uppercase">Qty</p>
-                                        <p className="font-bold text-gray-800">{ticket.quantity}</p>
+                                        <p className="text-xs  uppercase">Qty</p>
+                                        <p className="font-bold ">{ticket.quantity}</p>
                                     </div>
                                 </div>
 
@@ -114,8 +114,8 @@ const MyAddTickets = () => {
                                         disabled={ticket.verificationStatus === 'rejected'}
                                         className={`flex-1 flex items-center justify-center gap-2 py-2 rounded-lg font-semibold transition-colors
                       ${ticket.verificationStatus === 'rejected'
-                                                ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
-                                                : 'bg-blue-50 text-blue-600 hover:bg-blue-100'
+                                                ? 'cursor-not-allowed'
+                                                : ' hover:text-blue-500'
                                             }`}
                                     >
                                         <Edit size={16} /> Update
@@ -127,8 +127,8 @@ const MyAddTickets = () => {
                                         disabled={ticket.verificationStatus === 'rejected'}
                                         className={`flex-1 flex items-center justify-center gap-2 py-2 rounded-lg font-semibold transition-colors
                       ${ticket.verificationStatus === 'rejected'
-                                                ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
-                                                : 'bg-red-50 text-red-600 hover:bg-red-100'
+                                                ? ' cursor-not-allowed'
+                                                : 'hover:text-red-400'
                                             }`}
                                     >
                                         <Trash2 size={16} /> Delete
@@ -136,7 +136,7 @@ const MyAddTickets = () => {
                                 </div>
 
                                 {ticket.verificationStatus === 'rejected' && (
-                                    <p className="text-xs text-red-500 text-center mt-2 italic">
+                                    <p className="text-xs text-center mt-2 italic">
                                         Actions disabled (Ticket Rejected)
                                     </p>
                                 )}

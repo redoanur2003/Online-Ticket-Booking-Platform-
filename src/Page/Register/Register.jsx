@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router';
 import SocialLogin from '../SocialLogin/SocialLogin';
@@ -6,6 +6,7 @@ import axios from 'axios';
 import UseAxios from '../../Hook/UseAxios/UseAxios';
 import useAuth from '../../Component/Auth/AuthContext/useAuth';
 import Swal from 'sweetalert2';
+import { Eye, EyeOff } from 'lucide-react';
 
 const Register = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -13,7 +14,11 @@ const Register = () => {
     const location = useLocation();
     const navigate = useNavigate();
     const axiosSecure = UseAxios();
+    const [show, setShow] = useState(false)
 
+    const handleShow = (e) => {
+        setShow(e);
+    }
 
     const handleRegistration = (data) => {
 
@@ -110,27 +115,38 @@ const Register = () => {
 
                     {/* password */}
                     <label className="label">Password</label>
-                    <input type="password" {...register('password', {
-                        required: true,
-                        minLength: 6,
-                        pattern: /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[^A-Za-z0-9]).+$/
-                    })} className="input" placeholder="Password" />
-                    {
-                        errors.password?.type === 'required' && <p className='text-red-500'>Password is required.</p>
-                    }
-                    {
-                        errors.password?.type === 'minLength' && <p className='text-red-500'>
-                            Password must be 6 characters or longer
-                        </p>
-                    }
-                    {
-                        errors.password?.type === 'pattern' && <p className='text-red-500'>Password must have at least one uppercase, at least one lowercase, at least one number, and at least one special characters</p>
-                    }
+                    <div>
+                        <input type={show ? 'text' : "password"} {...register('password', {
+                            required: true,
+                            minLength: 6,
+                            pattern: /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[^A-Za-z0-9]).+$/
+                        })} className="input" placeholder="Password" />
+                        {
+                            errors.password?.type === 'required' && <p className='text-red-500'>Password is required.</p>
+                        }
+                        {
+                            errors.password?.type === 'minLength' && <p className='text-red-500'>
+                                Password must be 6 characters or longer
+                            </p>
+                        }
+                        {
+                            errors.password?.type === 'pattern' && <p className='text-red-500'>Password must have at least one uppercase, at least one lowercase, at least one number, and at least one special characters</p>
+                        }
+
+                        <button
+                            type="button"
+                            onClick={() => handleShow(!show)}
+                            className="absolute top-9/16 right-4 "
+                        >
+                            {show ? <EyeOff size={20} /> : <Eye size={20} />}
+                        </button>
+
+                    </div>
                     <button className="btn btn-neutral mt-4">Register</button>
                 </fieldset>
                 <p>Already have an account <Link
                     state={location.state}
-                    className='text-blue-400 underline'
+                    className=' underline'
                     to="/login">Login</Link></p>
             </form>
             <SocialLogin></SocialLogin>

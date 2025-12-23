@@ -89,7 +89,7 @@ const VAddTickets = () => {
         <div>
             <h1 className='text-center font-bold text-2xl'>Add ticket</h1>
 
-            <form onSubmit={handleSubmit(handleAddTicket)} className='mt-12 p-4 text-black'>
+            <form onSubmit={handleSubmit(handleAddTicket)} className='mt-12 p-4 '>
                 {/* two column */}
                 <div className='grid'>
                     <h4 className="text-2xl font-semibold text-center">Ticket Details</h4>
@@ -187,14 +187,14 @@ const VAddTickets = () => {
                                 <label className="label mt-4">Perks</label>
                                 <div className="flex flex-wrap gap-4">
                                     {['AC', 'WiFi', 'Sleepers', 'Snacks', 'Ocean View', 'Fishing', 'Padma view'].map((perk) => (
-                                        <label key={perk} className="flex items-center gap-2 cursor-pointer bg-gray-50 px-4 py-2 rounded-lg border border-gray-200">
+                                        <label key={perk} className="flex items-center gap-2 cursor-pointer px-4 py-2 rounded-lg border border-gray-200">
                                             <input
                                                 type="checkbox"
                                                 value={perk}
                                                 {...register('perks')}
-                                                className="w-4 h-4 text-blue-600 rounded"
+                                                className="w-4 h-4 rounded"
                                             />
-                                            <span className="text-sm font-medium text-gray-600">{perk}</span>
+                                            <span className="text-sm font-medium ">{perk}</span>
                                         </label>
                                     ))}
                                 </div>
@@ -227,7 +227,7 @@ const VAddTickets = () => {
 
                 </div>
                 <div className='flex justify-center'>
-                    <input type="submit" className='btn btn-primary mt-8 text-black' value="Add Ticket" />
+                    <input type="submit" className='btn btn-primary mt-8 ' value="Add Ticket" />
                 </div>
             </form>
         </div>

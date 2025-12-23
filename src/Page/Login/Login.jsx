@@ -1,16 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router';
 import useAuth from '../../Component/Auth/AuthContext/useAuth';
 import SocialLogin from '../SocialLogin/SocialLogin';
 import Swal from 'sweetalert2';
+import { Eye, EyeOff } from 'lucide-react';
 
 const Login = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const { signInUser } = useAuth();
     const location = useLocation();
     const navigate = useNavigate();
+    const [show, setShow] = useState(false)
 
+    const handleShow = (e) => {
+        setShow(e);
+    }
 
     const handleLogin = (data) => {
         console.log('form data', data);
@@ -53,10 +58,20 @@ const Login = () => {
 
                     {/* password field */}
                     <label className="label">Password</label>
-                    <input type="password" {...register('password', { required: true, minLength: 6 })} className="input" placeholder="Password" />
-                    {
-                        errors.password?.type === 'required' && <p className='text-red-500'>Password is required </p>
-                    }
+                    <div>
+                        <input type={show ? 'text' : "password"} {...register('password', { required: true, minLength: 6 })} className="input pr-12" placeholder="Password" />
+
+                        <button
+                            type="button"
+                            onClick={() => handleShow(!show)}
+                            className="absolute top-9/22 right-4 "
+                        >
+                            {show ? <EyeOff size={20} /> : <Eye size={20} />}
+                        </button>
+                        {
+                            errors.password?.type === 'required' && <p className='text-red-500'>Password is required </p>
+                        }
+                    </div>
 
 
                     <div><Link to='/forget' className="link link-hover">Forgot password?</Link></div>
@@ -64,7 +79,7 @@ const Login = () => {
                 </fieldset>
                 <p>If you don't have any account?Please<Link
                     state={location.state}
-                    className='text-blue-400 underline'
+                    className=' underline'
                     to="/register">Register</Link></p>
             </form>
             <SocialLogin></SocialLogin>

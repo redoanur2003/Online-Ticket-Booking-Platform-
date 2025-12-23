@@ -45,7 +45,7 @@ const ForgetPassword = () => {
     return (
         <>
             <div>
-                <NavLink to='/login'><button className='flex gap-1 btn btn-primary text-black'> <ArrowLeft></ArrowLeft> Back</button></NavLink>
+                <NavLink to='/login'><button className='flex gap-1 btn btn-primary '> <ArrowLeft></ArrowLeft> Back</button></NavLink>
             </div>
             <div className="hero min-h-screen">
                 <div className="hero-content flex-col">
@@ -56,19 +56,19 @@ const ForgetPassword = () => {
                         </p>
                     </div>
 
-                    <div className="card w-full max-w-sm bg-white shrink-0 shadow-2xl">
+                    <div className="card w-full max-w-sm  shrink-0 shadow-2xl">
                         <div className="card-body">
                             <form onSubmit={handleReset}>
                                 <fieldset className="fieldset">
-                                    <label className="label text-black">Email</label>
+                                    <label className="label ">Email</label>
                                     <input
                                         type="email"
-                                        className="input bg-white"
+                                        className="input "
                                         placeholder="Enter your email"
                                         value={email}
                                         onChange={(e) => setEmail(e.target.value)}
                                     />
-                                    <button className="btn btn-primary mt-4 w-full text-black">Send Reset</button>
+                                    <button className="btn btn-primary mt-4 w-full ">Send Reset</button>
                                 </fieldset>
                             </form>
                         </div>

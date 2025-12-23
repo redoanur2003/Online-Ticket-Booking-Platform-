@@ -39,7 +39,7 @@ const Profile = () => {
                 <h2>Created: <strong>{date}</strong></h2>
             </div>
             <div className='flex justify-center mt-5 p-3'>
-                <button className='btn btn-primary text-black hover:btn-active' onClick={handleProfile}>Change Profile Data</button>
+                <button className='btn btn-primary  hover:btn-active' onClick={handleProfile}>Change Profile Data</button>
             </div>
         </>
     );

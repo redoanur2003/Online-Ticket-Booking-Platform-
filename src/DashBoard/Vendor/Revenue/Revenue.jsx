@@ -77,30 +77,30 @@ const Revenue = () => {
     const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
 
     return (
-        <div className="p-6 bg-gray-50 min-h-screen">
+        <div className="p-6 min-h-screen">
             <div className="max-w-7xl mx-auto space-y-8">
 
                 {/* Header */}
                 <div>
-                    <h1 className="text-3xl font-bold text-gray-800">Revenue Overview</h1>
-                    <p className="text-gray-500">Track your earnings and inventory performance</p>
+                    <h1 className="text-3xl font-bold ">Revenue Overview</h1>
+                    <p className="">Track your earnings and inventory performance</p>
                 </div>
 
                 {/* 1. Stat Cards Section */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
 
-                    <div className="p-4 rounded-3xl bg-white shadow-sm border text-center border-gray-100">
-                        <p className="text-sm text-gray-500 font-semibold">Total Revenue</p>
+                    <div className="p-4 rounded-3xl  shadow-sm border text-center border-gray-100">
+                        <p className="text-sm  font-semibold">Total Revenue</p>
                         <h3 className="text-2xl font-bold">৳ {totalRevenue}</h3>
                     </div>
 
-                    <div className="p-4 rounded-3xl bg-white shadow-sm border text-center border-gray-100">
-                        <p className="text-sm text-gray-500 font-semibold">Total Added Tickets</p>
+                    <div className="p-4 rounded-3xl  shadow-sm border text-center border-gray-100">
+                        <p className="text-sm  font-semibold">Total Added Tickets</p>
                         <h3 className="text-2xl font-bold">{totalTicket}</h3>
                     </div>
 
-                    <div className="p-4 rounded-3xl bg-white shadow-sm border text-center border-gray-100">
-                        <p className="text-sm text-gray-500 font-semibold">Total Tickets Sold</p>
+                    <div className="p-4 rounded-3xl  shadow-sm border text-center border-gray-100">
+                        <p className="text-sm  font-semibold">Total Tickets Sold</p>
                         <h3 className="text-2xl font-bold">{sellTicket}</h3>
                     </div>
 
@@ -110,8 +110,8 @@ const Revenue = () => {
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
 
                     {/* Bar Chart: Tickets Added vs Sold */}
-                    <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
-                        <h2 className="text-xl font-bold text-gray-800 mb-6">Sales vs Inventory</h2>
+                    <div className=" p-6 rounded-2xl shadow-sm border border-gray-100">
+                        <h2 className="text-xl font-bold  mb-6">Sales vs Inventory</h2>
                         <div className="h-72 w-full">
                             <ResponsiveContainer width="100%" height="100%">
                                 <BarChart data={chartData}>
@@ -128,8 +128,8 @@ const Revenue = () => {
                     </div>
 
                     {/* Pie Chart: Revenue by Transport Type */}
-                    <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
-                        <h2 className="text-xl font-bold text-gray-800 mb-6">Revenue by Transport Type</h2>
+                    <div className=" p-6 rounded-2xl shadow-sm border border-gray-100">
+                        <h2 className="text-xl font-bold  mb-6">Revenue by Transport Type</h2>
                         <div className="h-72 w-full flex items-center justify-center">
                             <ResponsiveContainer width="100%" height="100%">
                                 <PieChart>

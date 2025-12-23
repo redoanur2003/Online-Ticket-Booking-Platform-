@@ -20,10 +20,19 @@ import UpdateTicket from "../DashBoard/Vendor/MyAddTickets/UpdateTicket";
 import ManageTicket from "../DashBoard/Admin/ManageTicket/ManageTicket";
 import ManageUser from "../DashBoard/Admin/ManageUser/ManageUser";
 import AdvertiseTicket from "../DashBoard/Admin/AdvertiseTicket/AdvertiseTicket";
+import ErrorPage from "../Page/Error/ErrorPage";
+import ErrorTicket from "../Page/Error/ErrorTickets";
+import UseAxios from "../Hook/UseAxios/UseAxios";
+import VendorRoute from "../Component/Root/VendorRoute";
+import AdminRoute from "../Component/Root/AdminRoute";
+import MyPayment from "../DashBoard/User/MyPayment/MyPayment";
+import UserRoute from "../Component/Root/UserRoute";
 
+const api = UseAxios();
 export const router = createBrowserRouter([{
     path: '/',
     Component: Root,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
         {
             index: true, path: '/', Component: Home
@@ -33,12 +42,15 @@ export const router = createBrowserRouter([{
         },
         {
             path: '/tickets/:id', element: <PrivateRoute><SingleTicket></SingleTicket></PrivateRoute>,
+            loader: ({ params }) => api.get(`/tickets/id/${params.id}`),
+            errorElement: <ErrorTicket></ErrorTicket>
         }
     ]
 },
 {
     path: '/',
     Component: AuthLayout,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
         {
             path: '/login',
@@ -57,6 +69,7 @@ export const router = createBrowserRouter([{
 {
     path: '/dashboard',
     element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
         {
             index: true,
@@ -68,39 +81,68 @@ export const router = createBrowserRouter([{
         },
         {
             path: '/dashboard/myBookingTickets',
-            Component: MyBookingTickets
+            element: <UserRoute>
+                <MyBookingTickets></MyBookingTickets>
+            </UserRoute>
+
         },
+
+        {
+            path: '/dashboard/payment-history',
+            element: <UserRoute>
+                <MyPayment></MyPayment>
+            </UserRoute>
+        },
+
+
         {
             path: '/dashboard/addTicket',
-            Component: VAddTickets
+            element: <VendorRoute>
+                <VAddTickets></VAddTickets>
+            </VendorRoute>
         },
         {
             path: '/dashboard/myAddTickets',
-            Component: MyAddTickets
+            element: <VendorRoute>
+                <MyAddTickets></MyAddTickets>
+            </VendorRoute>
         },
         {
             path: '/dashboard/updateTicket/:id',
-            Component: UpdateTicket
+            errorElement: <ErrorTicket></ErrorTicket>,
+            element: <VendorRoute>
+                <UpdateTicket></UpdateTicket>
+            </VendorRoute>
         },
         {
             path: '/dashboard/requestedBookings',
-            Component: RequestBooking
+            element: <VendorRoute>
+                <RequestBooking></RequestBooking>
+            </VendorRoute>
         },
         {
             path: '/dashboard/revenue',
-            Component: Revenue
+            element: <VendorRoute>
+                <Revenue></Revenue>
+            </VendorRoute>
         },
         {
             path: '/dashboard/manageTickets',
-            Component: ManageTicket
+            element: <AdminRoute>
+                <ManageTicket></ManageTicket>
+            </AdminRoute>
         },
         {
             path: '/dashboard/manageUsers',
-            Component: ManageUser
+            element: <AdminRoute>
+                <ManageUser></ManageUser>
+            </AdminRoute>
         },
         {
             path: '/dashboard/advertiseTickets',
-            Component: AdvertiseTicket
+            element: <AdminRoute>
+                <AdvertiseTicket></AdvertiseTicket>
+            </AdminRoute>
         },
     ]
 }

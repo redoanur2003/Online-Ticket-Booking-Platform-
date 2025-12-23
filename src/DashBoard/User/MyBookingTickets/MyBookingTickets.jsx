@@ -18,9 +18,9 @@ const MyBookingTickets = () => {
     console.log(myBookings);
     return (
         <>
-            <div className="min-h-screen bg-gray-50 py-10 px-4 md:px-8">
+            <div className="min-h-screen  py-10 px-4 md:px-8">
                 <div className="max-w-7xl mx-auto">
-                    <h1 className="text-xl md:text-3xl font-bold text-center text-gray-800 mb-8">My Booked Tickets</h1>
+                    <h1 className="text-xl md:text-3xl font-bold text-center  mb-8">My Booked Tickets</h1>
 
                     {myBookings.length > 0 ?
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -29,7 +29,7 @@ const MyBookingTickets = () => {
                             ))}
                         </div> :
                         <div className="text-center py-20">
-                            <p className="text-gray-500 text-lg">You haven't booked any tickets yet.</p>
+                            <p className=" text-lg">You haven't booked any tickets yet.</p>
                         </div>
                     }
                 </div>

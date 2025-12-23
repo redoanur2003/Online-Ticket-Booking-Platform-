@@ -25,10 +25,10 @@ const ExtraSection = () => {
         <div>
             <section className="my-12 px-4 md:px-8 lg:px-12">
                 <div className="text-center mb-10">
-                    <h2 className="text-3xl font-bold text-gray-800 mb-2">
+                    <h2 className="text-3xl font-bold  mb-2">
                         Popular Routes
                     </h2>
-                    <p className="text-gray-500">
+                    <p className="">
                         Discover the most traveled destinations at the best prices
                     </p>
                 </div>
@@ -49,15 +49,15 @@ const ExtraSection = () => {
 
                             <div className="absolute inset-0 to-transparent flex flex-col justify-end p-4">
 
-                                <div className="absolute top-4 right-4 bg-white/20 backdrop-blur-md px-3 py-1 rounded-full text-xs text-white font-medium border border-white/30">
+                                <div className="absolute top-4 right-4 /20 backdrop-blur-md px-3 py-1 rounded-full text-xs  font-medium border border-white/30">
                                     {item.transportType}
                                 </div>
 
-                                <h3 className="text-xl font-bold text-white mb-1">
+                                <h3 className="text-xl font-bold  mb-1">
                                     {item.route}
                                 </h3>
-                                <p className="text-gray-200 text-sm font-medium">
-                                    Starts from <span className="text-fuchsia-900 font-bold">{item.startingPrice} BDT</span>
+                                <p className=" text-sm font-medium">
+                                    Starts from <span className="font-bold">{item.startingPrice} BDT</span>
                                 </p>
                             </div>
                         </div>
@@ -65,12 +65,12 @@ const ExtraSection = () => {
                 </div>
             </section>
 
-            <section className="py-16 bg-gray-50 px-4 md:px-8 lg:px-12">
+            <section className="py-16  px-4 md:px-8 lg:px-12">
                 <div className="text-center mb-12">
-                    <h2 className="text-3xl font-bold text-gray-800 mb-3">
+                    <h2 className="text-3xl font-bold  mb-3">
                         Why Choose TicketBari?
                     </h2>
-                    <p className="text-gray-600 max-w-2xl mx-auto">
+                    <p className=" max-w-2xl mx-auto">
                         We simplify your travel experience with reliability, security, and speed.
                     </p>
                 </div>
@@ -79,17 +79,17 @@ const ExtraSection = () => {
                     {factRoute.map((feature) => (
                         <div
                             key={feature._id}
-                            className="bg-white p-8 rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 flex flex-col items-center text-center border border-gray-100 h-full"
+                            className=" p-8 rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 flex flex-col items-center text-center border border-gray-100 h-full"
                         >
-                            <div className="mb-6 p-4 bg-gray-50 rounded-full">
+                            <div className="mb-6 p-4  rounded-full">
                                 {feature.icon}
                             </div>
 
-                            <h3 className="text-xl font-bold text-gray-800 mb-3">
+                            <h3 className="text-xl font-bold  mb-3">
                                 {feature.title}
                             </h3>
 
-                            <p className="text-gray-500 text-sm leading-relaxed">
+                            <p className=" text-sm leading-relaxed">
                                 {feature.description}
                             </p>
                         </div>
