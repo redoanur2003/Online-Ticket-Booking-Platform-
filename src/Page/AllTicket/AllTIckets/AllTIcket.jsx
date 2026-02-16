@@ -83,7 +83,7 @@ const AllTIcket = () => {
                 <div className='grid grid-cols-2 md:flex justify-center gap-32 p-2 mb-4 '>
                     <p onClick={() => handleSelect('bus')} className={`border bg-base-100  text-center  w-18 hover:text-green-400 rounded-2xl ${type === 'bus' ? 'bg-green-400' : ''}`}>Bus</p>
                     <p onClick={() => handleSelect('train')} className={`border bg-base-100  text-center w-18 hover:text-green-400 rounded-2xl ${type === 'train' ? 'bg-green-400' : ''}`}>Train</p>
-                    <p onClick={() => handleSelect('plane')} className={`border bg-base-100  text-center w-18 hover:text-green-400 rounded-2xl ${type === 'plane' ? 'bg-green-400' : ''}`}>Air</p>
+                    <p onClick={() => handleSelect('air')} className={`border bg-base-100  text-center w-18 hover:text-green-400 rounded-2xl ${type === 'plane' ? 'bg-green-400' : ''}`}>Air</p>
                     <p onClick={() => handleSelect('launch')} className={`border bg-base-100  text-center w-18 hover:text-green-400  rounded-2xl ${type === 'launch' ? 'bg-green-400' : ''}`}>Launch</p>
                 </div>
             </div>

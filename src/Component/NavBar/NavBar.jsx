@@ -60,7 +60,7 @@ const NavBar = () => {
                     </button>
 
                     <ul
-                        className={`absolute top-12  rounded-lg px-2  shadow-lg duration-1000 ${state ? 'grid gap-4 p-2 w-50 text-xl' : '-ml-40 grid gap-2'}`}>
+                        className={`absolute top-12 bg-base-100 rounded-lg px-2  shadow-lg duration-1000 ${state ? 'grid gap-4 p-2 w-50 text-xl' : '-ml-40 grid gap-2'}`}>
                         <Link to='/' className="hover:text-cyan-300 hover:underline">
                             Home</Link>
 
