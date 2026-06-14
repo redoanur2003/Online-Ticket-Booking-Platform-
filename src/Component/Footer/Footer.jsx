@@ -40,16 +40,18 @@ const Footer = () => {
                             <li><span className="font-medium ">Phone:</span> +880 1234 567 890</li>
 
                             <li className="pt-2">
-                                <nav className="flex gap-4 items-center">
+                                <nav className="flex gap-8 items-center">
                                     <a href="#" className="group flex flex-col items-center gap-1 hover:text-pink-600 transition">
                                         <FaInstagram size={24} />
-                                        <span className="text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity absolute -mt-4   px-1 rounded">IG</span>
+                                        <span className="text-xl font-black opacity-0 group-hover:opacity-100 transition-opacity absolute -mt-6 px-1 rounded">Instagram</span>
                                     </a>
-                                    <a href="#" className="group flex flex-col items-center gap-1 hover: transition">
+                                    <a href="#" className="group flex flex-col items-center gap-1 hover:text-gray-600 transition">
                                         <FaXTwitter size={24} />
+                                        <span className="text-xl font-black opacity-0 group-hover:opacity-100 transition-opacity absolute -mt-6 px-1 rounded">X(Twitter)</span>
                                     </a>
                                     <a href="#" className="group flex flex-col items-center gap-1 hover:text-blue-600 transition">
                                         <FaFacebook size={24} />
+                                        <span className="text-xl font-black opacity-0 group-hover:opacity-100 transition-opacity absolute -mt-6 px-1 rounded">Facebook</span>
                                     </a>
                                 </nav>
                             </li>

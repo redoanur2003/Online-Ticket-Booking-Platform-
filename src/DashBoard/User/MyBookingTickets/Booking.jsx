@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import React, { useState, useEffect } from 'react';
 import { Clock, MapPin, Calendar, CreditCard, AlertCircle } from 'lucide-react';
 import UseAxios from '../../../Hook/UseAxios/UseAxios';
+import { Link } from 'react-router';
 
 const Booking = ({ booking }) => {
     const axios = UseAxios();
@@ -112,9 +113,11 @@ const Booking = ({ booking }) => {
                 {/* Action Buttons */}
                 <div className="mt-auto pt-2 border-t border-gray-100">
                     {booking.status.toLowerCase() === 'accepted' && !isExpired && (
-                        <button className="w-full  hover:bg-green-700  font-bold py-2 rounded-lg flex items-center justify-center gap-2 transition-colors">
-                            <CreditCard size={18} /> Pay Now
-                        </button>
+                        <Link to="/dashboard/payment">
+                            <button className="w-full  hover:bg-green-700  font-bold py-2 rounded-lg flex items-center justify-center gap-2 transition-colors">
+                                <CreditCard size={18} /> Pay Now
+                            </button>
+                        </Link>
                     )}
 
                     {booking.status.toLowerCase() === 'pending' && (

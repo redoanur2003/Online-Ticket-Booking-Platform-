@@ -27,6 +27,7 @@ import VendorRoute from "../Component/Root/VendorRoute";
 import AdminRoute from "../Component/Root/AdminRoute";
 import MyPayment from "../DashBoard/User/MyPayment/MyPayment";
 import UserRoute from "../Component/Root/UserRoute";
+import Payment from "../DashBoard/User/Payment/Payment";
 
 const api = UseAxios();
 export const router = createBrowserRouter([{
@@ -83,6 +84,13 @@ export const router = createBrowserRouter([{
             path: '/dashboard/myBookingTickets',
             element: <UserRoute>
                 <MyBookingTickets></MyBookingTickets>
+            </UserRoute>
+
+        },
+        {
+            path: '/dashboard/payment',
+            element: <UserRoute>
+                <Payment></Payment>
             </UserRoute>
 
         },
